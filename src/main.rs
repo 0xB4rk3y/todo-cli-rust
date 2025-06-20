@@ -30,7 +30,7 @@ fn write_tasks(tasks: &Vec<Task>) {
 fn main() {
     let args: Vec<String> = env::args().collect();
     if args.len() < 2 {
-        println!("Komutlar: add <görev>, list, remove <indeks>");
+        println!("Commands: add <task>, list, remove <index>");
         return;
     }
 
@@ -39,7 +39,7 @@ fn main() {
     match args[1].as_str() {
         "add" => {
             if args.len() < 3 {
-                println!("Lütfen bir görev girin.");
+                println!("Please add a task.");
                 return;
             }
             let task = Task {
@@ -47,11 +47,11 @@ fn main() {
             };
             tasks.push(task);
             write_tasks(&tasks);
-            println!("Görev eklendi.");
+            println!("Task has been added.");
         }
         "list" => {
             if tasks.is_empty() {
-                println!("Hiç görev yok.");
+                println!("No tasks yet.");
             } else {
                 for (i, task) in tasks.iter().enumerate() {
                     println!("{} - {}", i + 1, task.description);
@@ -60,21 +60,21 @@ fn main() {
         }
         "remove" => {
             if args.len() < 3 {
-                println!("Silinecek görevin indeksini girin.");
+                println!("Please write the index of the task that you want to delete.");
                 return;
             }
             if let Ok(index) = args[2].parse::<usize>() {
                 if index == 0 || index > tasks.len() {
-                    println!("Geçersiz indeks.");
+                    println!("Invalid index");
                 } else {
                     tasks.remove(index - 1);
                     write_tasks(&tasks);
-                    println!("Görev silindi.");
+                    println!("Task removed.");
                 }
             } else {
-                println!("Lütfen geçerli bir sayı girin.");
+                println!("Please write a valid index.");
             }
         }
-        _ => println!("Bilinmeyen komut."),
+        _ => println!("Unknown command."),
     }
 }
