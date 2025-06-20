@@ -27,7 +27,7 @@ Make sure you have Rust installed:
 👉 https://www.rust-lang.org/tools/install
 
 ```bash
-git clone https://github.com/your-username/todo-cli-rust.git
+git clone https://github.com/0xB4rk3y/todo-cli-rust.git
 cd todo-cli-rust
 cargo build --release
 ./target/release/todo add "Write a README"
